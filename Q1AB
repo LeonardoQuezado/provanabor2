@@ -1,0 +1,29 @@
+version: '3.8'
+
+services:
+  product-page:
+    image: product-page-image
+    ports:
+      - "8080:8080"
+  reviews-v1:
+    image: reviews-v1-image
+    volumes:
+      - www:/ex/ex/ex/volume
+  reviews-v2:
+    image: reviews-v2-image
+    volumes:
+      - www:/ex/ex/ex/volume
+  reviews-v3:
+    image: reviews-v3-image
+    volumes:
+      - www:/ex/ex/ex/volume
+  ratings:
+    image: ratings-image
+  details:
+    image: details-image
+  locust:
+    image: locustio/locust
+    ports:
+      - "8089:8089"
+    environment:
+      - TARGET_URL=http://product-page-service-name
